@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNose.Properties {
+namespace SharpNose.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

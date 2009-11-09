@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-using System.IO;
+﻿using NUnit.Framework;
 using System.Linq;
-using DotNetNose.Core;
+using SharpNose.Core;
 
-namespace DotNetNose.Tests
+namespace SharpNose.Tests
 {
-	public class NUnitDiscoveryTests : NUnitTestBase
-	{
-		[Test]
-		public void FindTestAssembliesFromPath_PathHasSingleAssembly_FindOneFile()
-		{
-			var discovery = new NUnitTestDiscovery();
+    public class NUnitDiscoveryTests : NUnitTestBase
+    {
+        [Test]
+        public void FindTestAssembliesFromPath_PathHasSingleAssembly_FindOneFile()
+        {
+            var discovery = new NUnitTestDiscovery();
 			
-			var result = discovery.FindTestAssembliesInPath(SimpleAssemblyPath);
+            var result = discovery.FindTestAssembliesInPath(SimpleAssemblyPath);
 			
-			Assert.That(result.Count(), Is.EqualTo(1));
-		}	
+            Assert.That(result.Count(), Is.EqualTo(1));
+        }	
 		
-		[Test]
-		public void  FindTestAssembliesFromPath_PathHasTwoAssembly_FindTwoFiles()
-		{
-			var discovery = new NUnitTestDiscovery();
+        [Test]
+        public void  FindTestAssembliesFromPath_PathHasTwoAssembly_FindTwoFiles()
+        {
+            var discovery = new NUnitTestDiscovery();
 			
-			var result = discovery.FindTestAssembliesInPath(MultipleAssemblyPath);
+            var result = discovery.FindTestAssembliesInPath(MultipleAssemblyPath);
 			
-			Assert.That(result.Count(), Is.EqualTo(2));
-		}
-	}
+            Assert.That(result.Count(), Is.EqualTo(2));
+        }
+    }
 }

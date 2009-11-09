@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNose.Core", "DotNetNose.Core\DotNetNose.Core.csproj", "{4A69B647-9633-4F27-95BB-02C4420DAF5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Core", "DotNetNose.Core\SharpNose.Core.csproj", "{4A69B647-9633-4F27-95BB-02C4420DAF5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNose.Tests", "DotNetNose.Tests\DotNetNose.Tests.csproj", "{CBD27606-09A9-40FC-A10F-0C78136DF613}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests", "DotNetNose.Tests\SharpNose.Tests.csproj", "{CBD27606-09A9-40FC-A10F-0C78136DF613}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNose.Tests.Classes", "DotNetNose.Tests.Classes\DotNetNose.Tests.Classes.csproj", "{B5E67CFD-44E8-4B81-AEB3-317375BBA365}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests.Classes", "DotNetNose.Tests.Classes\SharpNose.Tests.Classes.csproj", "{B5E67CFD-44E8-4B81-AEB3-317375BBA365}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNose.Tests.Classes2", "DotNetNose.Tests.Classes2\DotNetNose.Tests.Classes2.csproj", "{4BBDD242-CE61-4772-89D4-CB829CD9BDD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests.Classes2", "DotNetNose.Tests.Classes2\SharpNose.Tests.Classes2.csproj", "{4BBDD242-CE61-4772-89D4-CB829CD9BDD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNose", "DotNetNose\DotNetNose.csproj", "{B317DC44-0776-469A-945D-72CEE1B84BAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose", "DotNetNose\SharpNose.csproj", "{B317DC44-0776-469A-945D-72CEE1B84BAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

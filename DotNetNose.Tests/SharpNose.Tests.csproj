@@ -4,8 +4,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>DotNetNose.Tests</RootNamespace>
-    <AssemblyName>DotNetNose.Tests</AssemblyName>
+    <RootNamespace>SharpNose.Tests</RootNamespace>
+    <AssemblyName>SharpNose.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
   </PropertyGroup>
@@ -68,17 +68,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotNetNose.Tests.Classes2\DotNetNose.Tests.Classes2.csproj">
+    <ProjectReference Include="..\DotNetNose.Tests.Classes2\SharpNose.Tests.Classes2.csproj">
       <Project>{4BBDD242-CE61-4772-89D4-CB829CD9BDD0}</Project>
-      <Name>DotNetNose.Tests.Classes2</Name>
+      <Name>SharpNose.Tests.Classes2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DotNetNose.Tests.Classes\DotNetNose.Tests.Classes.csproj">
+    <ProjectReference Include="..\DotNetNose.Tests.Classes\SharpNose.Tests.Classes.csproj">
       <Project>{B5E67CFD-44E8-4B81-AEB3-317375BBA365}</Project>
-      <Name>DotNetNose.Tests.Classes</Name>
+      <Name>SharpNose.Tests.Classes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DotNetNose.Core\DotNetNose.Core.csproj">
+    <ProjectReference Include="..\DotNetNose.Core\SharpNose.Core.csproj">
       <Project>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</Project>
-      <Name>DotNetNose.Core</Name>
+      <Name>SharpNose.Core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
