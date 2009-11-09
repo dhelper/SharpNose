@@ -1,11 +1,11 @@
 ﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{B5E67CFD-44E8-4B81-AEB3-317375BBA365}</ProjectGuid>
+    <ProjectGuid>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>DotNetNose.Tests.Classes</RootNamespace>
-    <AssemblyName>DotNetNose.Tests.Classes</AssemblyName>
+    <RootNamespace>SharpNose.Core</RootNamespace>
+    <AssemblyName>SharpNose.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SourceAnalysisOverrideSettingsFile>C:\Users\dror.TYPEMOCK\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
@@ -50,9 +50,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\Binaries\NUnit-2.5.2.9222\bin\net-2.0\framework\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -63,7 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NUnit525TestClass.cs" />
+    <Compile Include="CommandLineMaker.cs" />
+    <Compile Include="NUnitCommandLineMaker.cs" />
+    <Compile Include="NUnitTestDiscovery.cs" />
+    <Compile Include="TestDiscovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 </Project>

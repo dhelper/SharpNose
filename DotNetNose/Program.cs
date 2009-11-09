@@ -1,10 +1,10 @@
 ﻿using System;
-using DotNetNose.Core;
-using DotNetNose.Properties;
 using System.Diagnostics;
 using System.Linq;
+using SharpNose.Core;
+using SharpNose.Properties;
 
-namespace DotNetNose
+namespace SharpNose
 {
     class Program
     {

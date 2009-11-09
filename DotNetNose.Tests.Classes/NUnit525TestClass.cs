@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace DotNetNose.Tests.Classes
+namespace SharpNose.Tests.Classes
 {
-	[TestFixture]
-	public class TestClass
-	{
-		[Test]
-		public void Test()
-		{
-			Assert.AreEqual(4, 2 + 2);
-		}
-	}
+    [TestFixture]
+    public class TestClass
+    {
+        [Test]
+        public void Test()
+        {
+            Assert.AreEqual(4, 2 + 2);
+        }
+    }
 }

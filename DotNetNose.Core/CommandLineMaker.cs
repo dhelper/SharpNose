@@ -1,17 +1,14 @@
-﻿using System;
-using System.Linq;
-
-namespace DotNetNose.Core
+﻿namespace SharpNose.Core
 {
-	abstract public class CommandLineMaker
-	{
-		 NUnitTestDiscovery testDiscovery;
-		public CommandLineMaker()
-		{
-			testDiscovery = new NUnitTestDiscovery();
-		}
+    abstract public class CommandLineMaker
+    {
+        NUnitTestDiscovery testDiscovery;
+        public CommandLineMaker()
+        {
+            testDiscovery = new NUnitTestDiscovery();
+        }
 		
-		abstract public string TestRunner{get;}
+        abstract public string TestRunner{get;}
 		
         //public string GetCommandLine(string path)
         //{
@@ -22,7 +19,5 @@ namespace DotNetNose.Core
 			
         //    return result;
         //}
-	}
-	
-
+    }
 }

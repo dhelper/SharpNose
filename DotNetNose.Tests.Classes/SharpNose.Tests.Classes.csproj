@@ -1,13 +1,14 @@
 ﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{4BBDD242-CE61-4772-89D4-CB829CD9BDD0}</ProjectGuid>
+    <ProjectGuid>{B5E67CFD-44E8-4B81-AEB3-317375BBA365}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>DotNetNose.Tests.Classes2</RootNamespace>
-    <AssemblyName>DotNetNose.Tests.Classes2</AssemblyName>
+    <RootNamespace>SharpNose.Tests.Classes</RootNamespace>
+    <AssemblyName>SharpNose.Tests.Classes</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\dror.TYPEMOCK\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -62,8 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass1.cs" />
+    <Compile Include="NUnit525TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestClass2.cs" />
   </ItemGroup>
 </Project>

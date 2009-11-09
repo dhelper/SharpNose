@@ -1,13 +1,11 @@
-﻿using System;
-using DotNetNose.Core;
-using NUnit.Framework;
-using System.IO;
+﻿using NUnit.Framework;
+using SharpNose.Core;
 
-namespace DotNetNose.Tests
+namespace SharpNose.Tests
 {
-	[TestFixture]
-	public class NUnitCommandLineMakerTests : NUnitTestBase
-	{
+    [TestFixture]
+    public class NUnitCommandLineMakerTests : NUnitTestBase
+    {
         [Test]
         public void GetCommandLine_PathHasSingleAssembly_CommandLineIncludeThatAssembly()
         {
@@ -17,5 +15,5 @@ namespace DotNetNose.Tests
 
             Assert.That(clm.TestRunner, Is.EqualTo(expected));
         }
-	}
+    }
 }
