@@ -2,17 +2,17 @@
 {
     public class NUnitCommandLineMaker : CommandLineMaker
     {
-        private string path;
-        public NUnitCommandLineMaker(string nunitPath) :base()
+        private readonly string m_path;
+        public NUnitCommandLineMaker(string nunitPath) 
         {
-            path = nunitPath;	
+            m_path = nunitPath;	
         }
 		
         override public string TestRunner
         {
             get
             {
-                return path +"\\nunit-console.exe";
+                return m_path +"\\nunit-console.exe";
             }
 			
         }
