@@ -10,62 +10,46 @@ namespace SharpNose.Core
     {
         public IEnumerable<string> FindTestAssembliesInPath(string path)
         {
-            var files = Directory.GetFiles(path);
-            foreach(var filename in files)
-            {
-                if(IsValidAssebly(filename))
-                {
-                    var assembly = Assembly.LoadFrom(filename);
-				   
-                    if(IsTestAssembly(assembly))
-                    {
-                        yield return filename;
-                    }
-                }
-            }
-			
+            return from filename in Directory.GetFiles(path)
+                   where IsValidAssebly(filename)
+                   let assembly = Assembly.LoadFrom(filename)
+                   where IsTestAssembly(assembly)
+                   select filename;
         }
-		
-        private bool IsValidAssebly(string filename)
+
+        private static bool IsValidAssebly(string filename)
         {
             try
             {
-                AssemblyName.GetAssemblyName(filename);			
+                AssemblyName.GetAssemblyName(filename);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
-			
+
             return true;
         }
-		
+
         private bool IsTestAssembly(Assembly assembly)
         {
-            if(GetAllTestClasses(assembly).Any())
+            if (GetAllTestClasses(assembly).Any())
             {
-                return true;	
+                return true;
             }
-			
+
             return false;
         }
-		
-        private IEnumerable<Type> GetAllTestClasses(Assembly assembly) 
+
+        private IEnumerable<Type> GetAllTestClasses(Assembly assembly)
         {
-            foreach(Type type in assembly.GetTypes()) 
-            {
-                foreach(var attribute in  type.GetCustomAttributes(true))
-                {
-                    var attributeName = attribute.GetType().Name;
-    				
-                    if(attributeName.Equals(TestFixtureName))
-                    {
-                        yield return type;
-                    }
-                }
-            }
+            return from type in assembly.GetTypes()
+                   from attribute in type.GetCustomAttributes(true)
+                   let attributeName = attribute.GetType().Name
+                   where attributeName.Equals(TestFixtureName)
+                   select type;
         }
-		
-        public abstract string TestFixtureName{get;}
+
+        public abstract string TestFixtureName { get; }
     }
 }

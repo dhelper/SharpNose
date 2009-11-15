@@ -11,7 +11,7 @@ namespace SharpNose.Tests
         {
             var clm = new NUnitCommandLineMaker("c:\\numitDummyPath");
 
-            var expected = "c:\\numitDummyPath\\nunit-console.exe";
+            const string expected = "c:\\numitDummyPath\\nunit-console.exe";
 
             Assert.That(clm.TestRunner, Is.EqualTo(expected));
         }

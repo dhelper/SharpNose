@@ -25,10 +25,12 @@ namespace SharpNose
 
             Console.WriteLine("Running: {0} {1}", commandLineCreator.TestRunner, arguments);
             Console.WriteLine();
-            var startInfo = new ProcessStartInfo(commandLineCreator.TestRunner, arguments);
-            startInfo.WorkingDirectory = args[0];
-            startInfo.RedirectStandardOutput = true;
-            startInfo.UseShellExecute = false;
+            var startInfo = new ProcessStartInfo(commandLineCreator.TestRunner, arguments)
+                                {
+                                    WorkingDirectory = args[0],
+                                    RedirectStandardOutput = true,
+                                    UseShellExecute = false
+                                };
 
             var proc = Process.Start(startInfo);
             do
