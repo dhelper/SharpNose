@@ -14,6 +14,34 @@ namespace SharpNose
             Console.WriteLine();
             Console.WriteLine();
 
+            var result  = 0;
+            var parser = new ArgumentParser(args);
+            switch (parser.SelectedOperation) {
+            	case Operation.Config:
+            		ConfigSystem();
+            		break;
+            	case Operation.RunTests:
+            		result = RunTest(args);
+            		break;
+            	case Operation.Invalid:
+            	default:
+            		ShowHelp();
+            		break;
+            }
+            
+            return result;
+        }
+        
+        private static void ShowHelp()
+        {
+        }
+        
+        private static void ConfigSystem()
+        {
+        }
+        
+        static int RunTest(string[] args)
+        {
             var testDiscovery = new NUnitTestDiscovery();
 
             var result = testDiscovery.FindTestAssembliesInPath(args[0]);

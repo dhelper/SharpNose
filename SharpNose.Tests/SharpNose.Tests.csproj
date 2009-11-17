@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentParserTests.cs" />
     <Compile Include="NUnitCommandLineMakerTests.cs" />
     <Compile Include="NUnitDiscoveryTests.cs" />
     <Compile Include="NUnitTestBase.cs" />
@@ -79,6 +80,10 @@
     <ProjectReference Include="..\SharpNose.Core\SharpNose.Core.csproj">
       <Project>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</Project>
       <Name>SharpNose.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpNose\SharpNose.csproj">
+      <Project>{B317DC44-0776-469A-945D-72CEE1B84BAD}</Project>
+      <Name>SharpNose</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
