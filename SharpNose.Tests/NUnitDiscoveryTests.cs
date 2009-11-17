@@ -4,6 +4,7 @@ using SharpNose.Core;
 
 namespace SharpNose.Tests
 {
+	[TestFixture]
     public class NUnitDiscoveryTests : NUnitTestBase
     {
         [Test]
