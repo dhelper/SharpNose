@@ -8,6 +8,7 @@ namespace SharpNose
 {
     class Program
     {
+        [STAThread] 
         public static int Main(string[] args)
         {
             Console.WriteLine("DotNetNose Started...");
@@ -38,6 +39,8 @@ namespace SharpNose
         
         private static void ConfigSystem()
         {
+        	var config = new Config();
+            config.ShowDialog();
         }
         
         static int RunTest(string[] args)
