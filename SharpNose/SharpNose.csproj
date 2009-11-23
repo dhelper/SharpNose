@@ -100,10 +100,4 @@
       <Name>SharpNose.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Crystal_Clear_app_All_software_is_current.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Crystal_Clear_filesystem_folder_grey_open.png" />
-  </ItemGroup>
 </Project>
