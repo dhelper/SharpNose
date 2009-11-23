@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace SharpNose
 {
@@ -24,6 +25,20 @@ namespace SharpNose
             InitializeComponent();
         }
 
-        
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            Close();
+        }
+
+        private void imgLogo_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            
+        }        
     }
 }
