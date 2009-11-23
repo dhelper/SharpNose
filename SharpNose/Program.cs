@@ -44,6 +44,7 @@ namespace SharpNose
         
         private static bool ConfigSystem()
         {
+        	System.Console.WriteLine("Current NUnit directory: {0}", Settings.Default.NUnitRunnerPath);
         	System.Console.WriteLine("Please enter NUnit directory:");
         	var suggestedPath = System.Console.ReadLine();
         	if(Directory.Exists(suggestedPath) == false)
@@ -53,7 +54,7 @@ namespace SharpNose
         	}
         	        	
         	Settings.Default.NUnitRunnerPath = suggestedPath;
-        	
+        	Settings.Default.Save();
         	return true;
         }
         
