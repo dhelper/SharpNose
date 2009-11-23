@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+
 using SharpNose.Core;
 using SharpNose.Properties;
 
@@ -19,7 +21,10 @@ namespace SharpNose
             var parser = new ArgumentParser(args);
             switch (parser.SelectedOperation) {
             	case Operation.Config:
-            		ConfigSystem();
+            		if(ConfigSystem() == false)
+            		{
+            			result = 1;
+            		}
             		break;
             	case Operation.RunTests:
             		result = RunTest(args);
@@ -37,10 +42,19 @@ namespace SharpNose
         {
         }
         
-        private static void ConfigSystem()
+        private static bool ConfigSystem()
         {
-        	var config = new Config();
-            config.ShowDialog();
+        	System.Console.WriteLine("Please enter NUnit directory:");
+        	var suggestedPath = System.Console.ReadLine();
+        	if(Directory.Exists(suggestedPath) == false)
+        	{
+        		System.Console.WriteLine("Path not found - exiting");
+        		return false;
+        	}
+        	        	
+        	Settings.Default.NUnitRunnerPath = suggestedPath;
+        	
+        	return true;
         }
         
         static int RunTest(string[] args)

@@ -79,9 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentParser.cs" />
-    <Compile Include="Config.xaml.cs">
-      <DependentUpon>Config.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -102,12 +99,6 @@
       <Project>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</Project>
       <Name>SharpNose.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Config.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Crystal_Clear_app_All_software_is_current.png" />
