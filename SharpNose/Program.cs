@@ -13,7 +13,7 @@ namespace SharpNose
         [STAThread] 
         public static int Main(string[] args)
         {
-            Console.WriteLine("DotNetNose Started...");
+            Console.WriteLine("Welcome to #Nose...");
             Console.WriteLine();
             Console.WriteLine();
 
@@ -40,6 +40,13 @@ namespace SharpNose
         
         private static void ShowHelp()
         {
+            Console.WriteLine("Using #Nose is simple:");
+            Console.WriteLine("SharpNose [TragetDirectory]");
+            Console.WriteLine();
+            Console.WriteLine("To configure the path to NUnit use:");
+            Console.WriteLine("SharpNose -config");
+            Console.WriteLine();
+            Console.WriteLine("Goto www.Typemock.com to learn more about unit tests and TDD");
         }
         
         private static bool ConfigSystem()
