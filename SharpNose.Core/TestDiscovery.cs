@@ -12,9 +12,21 @@ namespace SharpNose.Core
         {
             return from filename in Directory.GetFiles(path)
                    where IsValidAssebly(filename)
-                   let assembly = Assembly.LoadFrom(filename)
+                   let assembly = LoadAssembly(filename)
                    where IsTestAssembly(assembly)
                    select filename;
+        }
+
+        private Assembly LoadAssembly(string filename)
+        {
+            try
+            {
+                return Assembly.LoadFrom(filename);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         private static bool IsValidAssebly(string filename)
@@ -33,9 +45,21 @@ namespace SharpNose.Core
 
         private bool IsTestAssembly(Assembly assembly)
         {
-            if (GetAllTestClasses(assembly).Any())
+            try
             {
-                return true;
+                if(assembly == null)
+                {
+                    return false;
+                }
+
+                if (GetAllTestClasses(assembly).Any())
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                
             }
 
             return false;
