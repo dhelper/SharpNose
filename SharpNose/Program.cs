@@ -34,7 +34,9 @@ namespace SharpNose
             		ShowHelp();
             		break;
             }
-            
+
+            Console.WriteLine("Goto www.Typemock.com to learn more about unit testing and TDD");
+
             return result;
         }
         
@@ -46,7 +48,6 @@ namespace SharpNose
             Console.WriteLine("To configure the path to NUnit use:");
             Console.WriteLine("SharpNose -config");
             Console.WriteLine();
-            Console.WriteLine("Goto www.Typemock.com to learn more about unit tests and TDD");
         }
         
         private static bool ConfigSystem()
