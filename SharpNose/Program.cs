@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -13,6 +14,8 @@ namespace SharpNose
         [STAThread] 
         public static int Main(string[] args)
         {
+            var foregroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Welcome to #Nose...");
             Console.WriteLine();
             Console.WriteLine();
@@ -31,33 +34,45 @@ namespace SharpNose
             		break;
             	case Operation.Invalid:
             	default:
+                    Console.ForegroundColor = foregroundColor;
+
             		ShowHelp();
             		break;
             }
 
-            Console.WriteLine("Goto www.Typemock.com to learn more about unit testing and TDD");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Visit www.Typemock.com to learn more about unit testing and TDD");
+            Console.ForegroundColor = foregroundColor;
 
             return result;
         }
         
         private static void ShowHelp()
         {
+            var foregroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Using #Nose is simple:");
-            Console.WriteLine("SharpNose [TragetDirectory]");
+            Console.ForegroundColor = foregroundColor;
+            Console.WriteLine("SharpNose [Target Directory]");
             Console.WriteLine();
-            Console.WriteLine("To configure the path to NUnit use:");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Configure the path to NUnit using:");
+            Console.ForegroundColor = foregroundColor;
             Console.WriteLine("SharpNose -config");
             Console.WriteLine();
+            Console.ForegroundColor = foregroundColor;
         }
         
         private static bool ConfigSystem()
         {
         	System.Console.WriteLine("Current NUnit directory: {0}", Settings.Default.NUnitRunnerPath);
-        	System.Console.WriteLine("Please enter NUnit directory:");
+        	Console.ForegroundColor = ConsoleColor.Yellow;
+            System.Console.WriteLine("Please enter NUnit directory:");
         	var suggestedPath = System.Console.ReadLine();
         	if(Directory.Exists(suggestedPath) == false)
         	{
-        		System.Console.WriteLine("Path not found - exiting");
+                Console.ForegroundColor = ConsoleColor.Red;
+        		Console.WriteLine("Path not found - exiting");
         		return false;
         	}
         	        	
@@ -72,11 +87,13 @@ namespace SharpNose
 
             var result = testDiscovery.FindTestAssembliesInPath(args[0]);
 
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(string.Format("Found {0} assemblies in path", result.Count()));
             Console.WriteLine();
             var commandLineCreator = new NUnitCommandLineMaker(Settings.Default.NUnitRunnerPath);
             var arguments = string.Join(" ", result.Select(path => "\"" + path + "\"").ToArray());
-
+            
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Running: {0} {1}", commandLineCreator.TestRunner, arguments);
             Console.WriteLine();
             var startInfo = new ProcessStartInfo(commandLineCreator.TestRunner, arguments)
