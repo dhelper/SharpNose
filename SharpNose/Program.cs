@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -65,9 +66,9 @@ namespace SharpNose
         
         private static bool ConfigSystem()
         {
-        	System.Console.WriteLine("Current NUnit directory: {0}", Settings.Default.NUnitRunnerPath);
+        	Console.WriteLine("Current NUnit directory: {0}", Settings.Default.NUnitRunnerPath);
         	Console.ForegroundColor = ConsoleColor.Yellow;
-            System.Console.WriteLine("Please enter NUnit directory:");
+            Console.WriteLine("Please enter NUnit directory:");
         	var suggestedPath = System.Console.ReadLine();
         	if(Directory.Exists(suggestedPath) == false)
         	{
@@ -80,23 +81,24 @@ namespace SharpNose
         	Settings.Default.Save();
         	return true;
         }
-        
+
+       
+
         static int RunTest(string[] args)
         {
-            var testDiscovery = new NUnitTestDiscovery();
+            var testDiscovery = new NUnitTestDiscovery(Settings.Default.NUnitRunnerPath);
 
             var result = testDiscovery.FindTestAssembliesInPath(args[0]);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(string.Format("Found {0} assemblies in path", result.Count()));
             Console.WriteLine();
-            var commandLineCreator = new NUnitCommandLineMaker(Settings.Default.NUnitRunnerPath);
-            var arguments = string.Join(" ", result.Select(path => "\"" + path + "\"").ToArray());
-            
+
+            var commandLineInfo = testDiscovery.GenerateCommandLine(result);
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Running: {0} {1}", commandLineCreator.TestRunner, arguments);
+            Console.WriteLine("Running: {0}", commandLineInfo);
             Console.WriteLine();
-            var startInfo = new ProcessStartInfo(commandLineCreator.TestRunner, arguments)
+            var startInfo = new ProcessStartInfo(commandLineInfo.TestRunner, commandLineInfo.Arguments)
                                 {
                                     WorkingDirectory = args[0],
                                     RedirectStandardOutput = true,

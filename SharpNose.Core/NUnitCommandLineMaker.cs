@@ -1,4 +1,7 @@
-﻿namespace SharpNose.Core
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace SharpNose.Core
 {
     public class NUnitCommandLineMaker : CommandLineMaker
     {
@@ -15,6 +18,12 @@
                 return m_path +"\\nunit-console.exe";
             }
 			
+        }
+
+        public string GenerateArguments(IEnumerable<string> testFixturesFound)
+        {
+            var arguments = string.Join(" ", testFixturesFound.Select(path => "\"" + path + "\"").ToArray());
+            return arguments;
         }
     }
 }
