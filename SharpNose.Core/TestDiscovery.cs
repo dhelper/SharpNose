@@ -74,6 +74,6 @@ namespace SharpNose.Core
                    select type;
         }
 
-        public abstract string TestFixtureName { get; }
+        protected abstract string TestFixtureName { get; }
     }
 }

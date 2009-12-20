@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using NUnit.Framework;
 
 namespace SharpNose.Tests
@@ -27,12 +28,26 @@ namespace SharpNose.Tests
         {
             if(Directory.Exists(SimpleAssemblyPath))
             {
-                Directory.Delete(SimpleAssemblyPath, true);
+                try
+                {
+                    Directory.Delete(SimpleAssemblyPath, true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
 			
             if(Directory.Exists(MultipleAssemblyPath))
             {
-                Directory.Delete(MultipleAssemblyPath, true);
+                try
+                {
+                    Directory.Delete(MultipleAssemblyPath, true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
 			
@@ -41,7 +56,7 @@ namespace SharpNose.Tests
         {
             get
             {
-                return "DotNetNose.Tests.Classes.dll";
+                return "SharpNose.Tests.Classes.dll";
             }
         }
 		
@@ -49,7 +64,7 @@ namespace SharpNose.Tests
         {
             get
             {
-                return "DotNetNose.Tests.Classes2.dll";
+                return "SharpNose.Tests.Classes2.dll";
             }
         }
 		
@@ -57,7 +72,7 @@ namespace SharpNose.Tests
         {
             get
             {
-                return @"\TestClasses";
+                return Path.GetTempPath() + @"\TestClasses";
             }
         }
 		
@@ -65,7 +80,7 @@ namespace SharpNose.Tests
         {
             get
             {
-                return @"\TestClasses2";
+                return Path.GetTempPath() + @"\TestClasses2";
             }
         }
 		
