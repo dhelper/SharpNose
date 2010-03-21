@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Linq;
-using SharpNose.Core;
+using SharpNose.Core.NUnit;
 
 namespace SharpNose.Tests
 {
@@ -10,7 +10,7 @@ namespace SharpNose.Tests
         [Test]
         public void FindTestAssembliesFromPath_PathHasSingleAssembly_FindOneFile()
         {
-            var discovery = new NUnitTestDiscovery(string.Empty);
+            var discovery = new NUnitTestDiscovery();
 			
             var result = discovery.FindTestAssembliesInPath(SimpleAssemblyPath);
 			
@@ -20,7 +20,7 @@ namespace SharpNose.Tests
         [Test]
         public void  FindTestAssembliesFromPath_PathHasTwoAssembly_FindTwoFiles()
         {
-            var discovery = new NUnitTestDiscovery(string.Empty);
+            var discovery = new NUnitTestDiscovery();
 			
             var result = discovery.FindTestAssembliesInPath(MultipleAssemblyPath);
 			

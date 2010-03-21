@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Core", "SharpNose.Core\SharpNose.Core.csproj", "{4A69B647-9633-4F27-95BB-02C4420DAF5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose", "SharpNose\SharpNose.csproj", "{B317DC44-0776-469A-945D-72CEE1B84BAD}"
