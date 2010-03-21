@@ -25,8 +25,9 @@ namespace SharpNose.Core
             container.ComposeParts(this);
         }
 
-        public void RunTests(string path)
+        public int RunTests(string path)
         {
+            int returnedValue = 0;
             foreach (var testDiscovery in testDiscoveries)
             {
                 testDiscovery.TestRunnerPath = configurations[testDiscovery.Name].Path;
@@ -62,13 +63,15 @@ namespace SharpNose.Core
 
                 if (proc.ExitCode != 0)
                 {
+                    returnedValue = proc.ExitCode;
                     // TODO: proper error handling
                     messageRecieved(this,
                                     new MessageRecievedEventArgs(
-                                        string.Format("Process returned error code {0}",proc.ExitCode)));
+                                        string.Format("Process returned error code {0}",returnedValue)));
                 }
             }
 
+            return returnedValue;
         }
 
         public void AddConfiguration(TestRunnerConfiguration configuration)

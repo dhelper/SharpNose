@@ -72,11 +72,11 @@ namespace SharpNose
             runner.messageRecieved += OnMessageRecieved;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Starting run...");
-            runner.RunTests(Path.GetFullPath(args.First()));
+            var res = runner.RunTests(Path.GetFullPath(args.First()));
 
             runner.messageRecieved -= OnMessageRecieved;
 
-            return 0;
+            return res;
         }
 
         private static void OnMessageRecieved(object sender, MessageRecievedEventArgs e)
