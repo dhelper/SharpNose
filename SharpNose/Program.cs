@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
+using System.Configuration;
 using System.IO;
-using System.Linq;
-
 using SharpNose.Core;
-using SharpNose.Properties;
+using System.Linq;
 
 namespace SharpNose
 {
     class Program
     {
-        [STAThread] 
+        [STAThread]
         public static int Main(string[] args)
         {
             var foregroundColor = Console.ForegroundColor;
@@ -21,24 +18,26 @@ namespace SharpNose
             Console.WriteLine();
             Console.WriteLine();
 
-            var result  = 0;
+            var result = 0;
+
             var parser = new ArgumentParser(args);
-            switch (parser.SelectedOperation) {
-            	case Operation.Config:
-            		if(ConfigSystem() == false)
-            		{
-            			result = 1;
-            		}
-            		break;
-            	case Operation.RunTests:
-            		result = RunTest(args);
-            		break;
-            	case Operation.Invalid:
-            	default:
+            switch (parser.SelectedOperation)
+            {
+                case Operation.Config:
+                    //            		if(ConfigSystem() == false)
+                    //            		{
+                    //            			result = 1;
+                    //            		}
+                    break;
+                case Operation.RunTests:
+                    result = RunTest(args);
+                    break;
+                case Operation.Invalid:
+                default:
                     Console.ForegroundColor = foregroundColor;
 
-            		ShowHelp();
-            		break;
+                    ShowHelp();
+                    break;
             }
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -47,7 +46,7 @@ namespace SharpNose
 
             return result;
         }
-        
+
         private static void ShowHelp()
         {
             var foregroundColor = Console.ForegroundColor;
@@ -57,65 +56,41 @@ namespace SharpNose
             Console.WriteLine("SharpNose [Target Directory]");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Configure the path to NUnit using:");
-            Console.ForegroundColor = foregroundColor;
-            Console.WriteLine("SharpNose -config");
-            Console.WriteLine();
+            //            Console.WriteLine("Configure the path to NUnit using:");
+            //            Console.ForegroundColor = foregroundColor;
+            //            Console.WriteLine("SharpNose -config");
+            //            Console.WriteLine();
             Console.ForegroundColor = foregroundColor;
         }
-        
-        private static bool ConfigSystem()
+
+        static int RunTest(IEnumerable<string> args)
         {
-        	Console.WriteLine("Current NUnit directory: {0}", Settings.Default.NUnitRunnerPath);
-        	Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Please enter NUnit directory:");
-        	var suggestedPath = System.Console.ReadLine();
-        	if(Directory.Exists(suggestedPath) == false)
-        	{
-                Console.ForegroundColor = ConsoleColor.Red;
-        		Console.WriteLine("Path not found - exiting");
-        		return false;
-        	}
-        	        	
-        	Settings.Default.NUnitRunnerPath = suggestedPath;
-        	Settings.Default.Save();
-        	return true;
-        }
+            var runner = new Runner();
 
-       
-
-        static int RunTest(string[] args)
-        {
-            var testDiscovery = new NUnitTestDiscovery(Settings.Default.NUnitRunnerPath);
-
-            var result = testDiscovery.FindTestAssembliesInPath(args[0]);
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(string.Format("Found {0} assemblies in path", result.Count()));
-            Console.WriteLine();
-
-            var commandLineInfo = testDiscovery.GenerateCommandLine(result);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Running: {0}", commandLineInfo);
-            Console.WriteLine();
-            var startInfo = new ProcessStartInfo(commandLineInfo.TestRunner, commandLineInfo.Arguments)
-                                {
-                                    WorkingDirectory = args[0],
-                                    RedirectStandardOutput = true,
-                                    UseShellExecute = false
-                                };
-
-            var proc = Process.Start(startInfo);
-            do
+            var configSection = ConfigurationManager.GetSection("plugins") as Plugins;
+            foreach (RunnerConfiguration runnerConfiguration in configSection.TestRunners)
             {
-                string output = proc.StandardOutput.ReadLine();
-                Console.WriteLine(output);
+                var testRunnerConfiguration = new TestRunnerConfiguration(runnerConfiguration.Name,
+                                                                          runnerConfiguration.Path,
+                                                                          runnerConfiguration.AdditionalArguments);
+
+                runner.AddConfiguration(testRunnerConfiguration);
             }
-            while (proc.StandardOutput.EndOfStream == false);
 
-            proc.WaitForExit();
+            runner.messageRecieved += OnMessageRecieved;
 
-            return proc.ExitCode;
+            runner.RunTests(Path.GetFullPath(args.First()));
+
+            runner.messageRecieved -= OnMessageRecieved;
+
+            return 0;
+        }
+
+        private static void OnMessageRecieved(object sender, MessageRecievedEventArgs e)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(e.Message);
+            Console.WriteLine();
         }
     }
 }

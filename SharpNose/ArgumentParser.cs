@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace SharpNose
 {
@@ -12,21 +14,21 @@ namespace SharpNose
 	
 	public class ArgumentParser
 	{
-		public ArgumentParser(string[] arguments)
+		public ArgumentParser(IEnumerable<string> arguments)
 		{
 			SelectedOperation = Operation.Invalid;
 			
-			if(arguments.Length == 1)
+			if(arguments.Count() == 1)
 			{
-				if(Directory.Exists(arguments[0]))
+                if (arguments.First() == "-config")
+                {
+                    SelectedOperation = Operation.Config;
+                }
+
+			    string fullPath = Path.GetFullPath(arguments.First());
+			    if(Directory.Exists(fullPath))
 				{
 					SelectedOperation = Operation.RunTests;
-				}
-				
-				if(arguments[0] == "-config")
-				{
-					SelectedOperation = Operation.Config;
-					
 				}
 			}		
 		}

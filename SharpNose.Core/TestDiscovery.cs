@@ -8,6 +8,13 @@ namespace SharpNose.Core
 {
     public abstract class TestDiscovery
     {
+        abstract public string Name { get; }
+        protected abstract string TestFixtureName { get; }
+        
+        public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);
+
+        public string TestRunnerPath { get; set; }
+
         public IEnumerable<string> FindTestAssembliesInPath(string path)
         {
             return from filename in Directory.GetFiles(path)
@@ -17,7 +24,7 @@ namespace SharpNose.Core
                    select filename;
         }
 
-        private Assembly LoadAssembly(string filename)
+        private static Assembly LoadAssembly(string filename)
         {
             try
             {
@@ -73,7 +80,5 @@ namespace SharpNose.Core
                    where attributeName.Equals(TestFixtureName)
                    select type;
         }
-
-        protected abstract string TestFixtureName { get; }
     }
 }
