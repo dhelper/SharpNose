@@ -14,6 +14,7 @@ namespace SharpNose.Core
         public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);
 
         public string TestRunnerPath { get; set; }
+        public string AdditionalArguments { get; set; }
 
         public IEnumerable<string> FindTestAssembliesInPath(string path)
         {

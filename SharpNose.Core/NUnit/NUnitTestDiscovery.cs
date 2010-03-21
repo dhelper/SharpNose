@@ -20,7 +20,9 @@ namespace SharpNose.Core.NUnit
         {
             var commandlineMaker = new NUnitCommandLineMaker(TestRunnerPath);
 
-            return new CommandLineInfo(commandlineMaker.TestRunner, commandlineMaker.GenerateArguments(testFixtruesFound));
+            string generateArguments = commandlineMaker.GenerateArguments(testFixtruesFound);
+
+            return new CommandLineInfo(commandlineMaker.TestRunner, generateArguments, AdditionalArguments);
         }
     }
 }

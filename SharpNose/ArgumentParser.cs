@@ -20,11 +20,6 @@ namespace SharpNose
 			
 			if(arguments.Count() == 1)
 			{
-                if (arguments.First() == "-config")
-                {
-                    SelectedOperation = Operation.Config;
-                }
-
 			    string fullPath = Path.GetFullPath(arguments.First());
 			    if(Directory.Exists(fullPath))
 				{

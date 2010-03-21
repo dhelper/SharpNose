@@ -23,15 +23,11 @@ namespace SharpNose
             var parser = new ArgumentParser(args);
             switch (parser.SelectedOperation)
             {
-                case Operation.Config:
-                    //            		if(ConfigSystem() == false)
-                    //            		{
-                    //            			result = 1;
-                    //            		}
-                    break;
                 case Operation.RunTests:
                     result = RunTest(args);
+
                     break;
+                case Operation.Config:
                 case Operation.Invalid:
                 default:
                     Console.ForegroundColor = foregroundColor;
@@ -56,10 +52,6 @@ namespace SharpNose
             Console.WriteLine("SharpNose [Target Directory]");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            //            Console.WriteLine("Configure the path to NUnit using:");
-            //            Console.ForegroundColor = foregroundColor;
-            //            Console.WriteLine("SharpNose -config");
-            //            Console.WriteLine();
             Console.ForegroundColor = foregroundColor;
         }
 
@@ -78,7 +70,8 @@ namespace SharpNose
             }
 
             runner.messageRecieved += OnMessageRecieved;
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Starting run...");
             runner.RunTests(Path.GetFullPath(args.First()));
 
             runner.messageRecieved -= OnMessageRecieved;
@@ -88,7 +81,7 @@ namespace SharpNose
 
         private static void OnMessageRecieved(object sender, MessageRecievedEventArgs e)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(e.Message);
             Console.WriteLine();
         }
