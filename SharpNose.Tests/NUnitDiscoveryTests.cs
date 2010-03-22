@@ -18,13 +18,13 @@ namespace SharpNose.Tests
         }	
 		
         [Test]
-        public void  FindTestAssembliesFromPath_PathHasTwoAssembly_FindTwoFiles()
+        public void  FindTestAssembliesFromPath_PathHasTwoAssembly_FindOneFile()
         {
             var discovery = new NUnitTestDiscovery();
 			
             var result = discovery.FindTestAssembliesInPath(MultipleAssemblyPath);
 			
-            Assert.That(result.Count(), Is.EqualTo(2));
+            Assert.That(result.Count(), Is.EqualTo(1));
         }
     }
 }

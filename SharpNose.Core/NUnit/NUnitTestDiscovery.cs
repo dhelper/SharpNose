@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace SharpNose.Core.NUnit
 {
@@ -11,7 +14,7 @@ namespace SharpNose.Core.NUnit
             get { return "NUnit"; }
         }
 
-        protected override string TestFixtureName
+        public override string TestFixtureName
         {
             get { return "TestFixtureAttribute"; }
         }
@@ -23,6 +26,65 @@ namespace SharpNose.Core.NUnit
             string generateArguments = commandlineMaker.GenerateArguments(testFixtruesFound);
 
             return new CommandLineInfo(commandlineMaker.TestRunner, generateArguments, AdditionalArguments);
+        }
+
+        public override bool ShouldTestAssembly(Assembly assembly)
+        {
+            return !assembly.GetReferencedAssemblies().Any(
+                referencedAssembly => referencedAssembly.Name.Equals("TypeMock") || 
+                    referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
+        }
+    }
+
+
+    [Export(typeof(TestDiscovery))]
+    public class NUnitIsolatorTestDiscovery : TestDiscovery
+    {
+        private readonly NUnitTestDiscovery internalTestDiscovery;
+
+        public NUnitIsolatorTestDiscovery()
+        {
+            internalTestDiscovery = new NUnitTestDiscovery();
+        }
+
+        public override string Name
+        {
+            get
+            {
+                return "Isolator";
+            }
+        }
+
+        public override Dictionary<string, TestRunnerConfiguration> Configuration
+        {
+            get
+            {
+                return base.Configuration;
+            }
+            set
+            {
+                base.Configuration = value;
+                internalTestDiscovery.Configuration = value;
+            }
+        }
+
+        public override string TestFixtureName
+        {
+            get { return internalTestDiscovery.TestFixtureName; }
+        }
+
+        public override CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound)
+        {
+            var result = internalTestDiscovery.GenerateCommandLine(testFixtruesFound);
+
+            return new CommandLineInfo(Path.Combine(TestRunnerPath, "TMockRunner.exe"), result.TestRunner + " " + result.Arguments, AdditionalArguments);
+        }
+
+        public override bool ShouldTestAssembly(Assembly assembly)
+        {
+            return assembly.GetReferencedAssemblies().Any(
+                referencedAssembly => referencedAssembly.Name.Equals("TypeMock") ||
+                    referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
         }
     }
 }

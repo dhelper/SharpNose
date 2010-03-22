@@ -9,12 +9,32 @@ namespace SharpNose.Core
     public abstract class TestDiscovery
     {
         abstract public string Name { get; }
-        protected abstract string TestFixtureName { get; }
-        
+        public abstract string TestFixtureName { get; }
+
         public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);
 
-        public string TestRunnerPath { get; set; }
-        public string AdditionalArguments { get; set; }
+        public string TestRunnerPath
+        {
+            get
+            {
+                return Configuration[Name].Path;
+            }
+        }
+
+        public string AdditionalArguments
+        {
+            get
+            {
+                return Configuration[Name].AdditionalArguments;
+            }
+        }
+
+        public virtual Dictionary<string, TestRunnerConfiguration> Configuration { get; set; }
+
+        public virtual bool ShouldTestAssembly(Assembly assembly)
+        {
+            return true;
+        }
 
         public IEnumerable<string> FindTestAssembliesInPath(string path)
         {
@@ -43,7 +63,7 @@ namespace SharpNose.Core
             {
                 AssemblyName.GetAssemblyName(filename);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -55,19 +75,19 @@ namespace SharpNose.Core
         {
             try
             {
-                if(assembly == null)
+                if (assembly == null)
                 {
                     return false;
                 }
 
-                if (GetAllTestClasses(assembly).Any())
+                if (GetAllTestClasses(assembly).Any() && ShouldTestAssembly(assembly))
                 {
                     return true;
                 }
             }
             catch
             {
-                
+
             }
 
             return false;

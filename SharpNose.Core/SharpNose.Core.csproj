@@ -93,6 +93,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="CommandLineInfo.cs" />
     <Compile Include="CommandLineMaker.cs" />
     <Compile Include="MessageRecievedEventArgs.cs" />

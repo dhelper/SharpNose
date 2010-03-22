@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SharpNose.Core.NUnit
 {
     public class NUnitCommandLineMaker : CommandLineMaker
     {
-        private readonly string m_path;
+        private readonly string runnerPath;
         public NUnitCommandLineMaker(string nunitPath) 
         {
-            m_path = nunitPath;	
+            runnerPath = Path.GetFullPath(nunitPath);	
         }
 		
         override public string TestRunner
         {
             get
             {
-                return m_path +"\\nunit-console.exe";
+                return runnerPath +"\\nunit-console.exe";
             }
 			
         }

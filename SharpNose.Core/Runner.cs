@@ -30,13 +30,16 @@ namespace SharpNose.Core
             int returnedValue = 0;
             foreach (var testDiscovery in testDiscoveries)
             {
-                testDiscovery.TestRunnerPath = configurations[testDiscovery.Name].Path;
-                testDiscovery.AdditionalArguments = configurations[testDiscovery.Name].AdditionalArguments;
+                testDiscovery.Configuration = configurations;
                 
                 var result = testDiscovery.FindTestAssembliesInPath(path);
 
                 messageRecieved(this, 
                     new MessageRecievedEventArgs(string.Format("Found {0} assemblies in path", result.Count())));
+                if(result.Count() == 0)
+                {
+                    continue;
+                }
 
                 var commandLineInfo = testDiscovery.GenerateCommandLine(result);
                 
@@ -44,7 +47,7 @@ namespace SharpNose.Core
                     new MessageRecievedEventArgs(string.Format("Running: {0}", commandLineInfo)));
 
                 string runnerExec = Path.GetFullPath(commandLineInfo.TestRunner);
-                string arguments = commandLineInfo.Arguments;
+                string arguments = commandLineInfo.Arguments + " " + commandLineInfo.AddtionalArguments;
                 var startInfo = new ProcessStartInfo(runnerExec, arguments)
                 {
                     WorkingDirectory = path,
