@@ -9,24 +9,24 @@ namespace SharpNose.Tests
         [TestFixtureSetUp]
         public void SetUp()
         {
-            if(Directory.Exists(SimpleAssemblyPath) == false)
+            if (Directory.Exists(SimpleAssemblyPath) == false)
             {
                 Directory.CreateDirectory(SimpleAssemblyPath);
-                File.Copy(@".\" + SimpleAssemblyName, SimpleAssemblyFullName, true);
             }
-			
-            if(Directory.Exists(MultipleAssemblyPath) == false)
+            File.Copy(@".\" + SimpleAssemblyName, SimpleAssemblyFullName, true);
+
+            if (Directory.Exists(MultipleAssemblyPath) == false)
             {
                 Directory.CreateDirectory(MultipleAssemblyPath);
-                File.Copy(@".\" + SimpleAssemblyName, MultipleAssemblyPath + "\\" + SimpleAssemblyName, true);
-                File.Copy(@".\" + SimpleAssembly2Name, MultipleAssemblyPath + "\\" + SimpleAssembly2Name, true);
             }
+            File.Copy(@".\" + SimpleAssemblyName, MultipleAssemblyPath + "\\" + SimpleAssemblyName, true);
+            File.Copy(@".\" + SimpleAssembly2Name, MultipleAssemblyPath + "\\" + SimpleAssembly2Name, true);
         }
-		
+
         [TestFixtureTearDown]
         public void TearDown()
         {
-            if(Directory.Exists(SimpleAssemblyPath))
+            if (Directory.Exists(SimpleAssemblyPath))
             {
                 try
                 {
@@ -37,8 +37,8 @@ namespace SharpNose.Tests
                     Console.WriteLine(e);
                 }
             }
-			
-            if(Directory.Exists(MultipleAssemblyPath))
+
+            if (Directory.Exists(MultipleAssemblyPath))
             {
                 try
                 {
@@ -50,8 +50,8 @@ namespace SharpNose.Tests
                 }
             }
         }
-			
-		
+
+
         internal string SimpleAssemblyName
         {
             get
@@ -59,7 +59,7 @@ namespace SharpNose.Tests
                 return "SharpNose.Tests.Classes.dll";
             }
         }
-		
+
         internal string SimpleAssembly2Name
         {
             get
@@ -67,7 +67,7 @@ namespace SharpNose.Tests
                 return "SharpNose.Tests.Classes2.dll";
             }
         }
-		
+
         internal string SimpleAssemblyPath
         {
             get
@@ -75,7 +75,7 @@ namespace SharpNose.Tests
                 return Path.GetTempPath() + @"\TestClasses";
             }
         }
-		
+
         internal string MultipleAssemblyPath
         {
             get
@@ -83,7 +83,7 @@ namespace SharpNose.Tests
                 return Path.GetTempPath() + @"\TestClasses2";
             }
         }
-		
+
         internal string SimpleAssemblyFullName
         {
             get
