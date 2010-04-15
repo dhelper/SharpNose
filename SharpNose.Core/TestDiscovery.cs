@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.ComponentModel.Composition;
 
 namespace SharpNose.Core
 {
@@ -17,7 +18,7 @@ namespace SharpNose.Core
         {
             get
             {
-                return Configuration[Name].Path;
+                return configurations[Name].Path;
             }
         }
 
@@ -25,11 +26,12 @@ namespace SharpNose.Core
         {
             get
             {
-                return Configuration[Name].AdditionalArguments;
+                return configurations[Name].AdditionalArguments;
             }
         }
 
-        public virtual Dictionary<string, TestRunnerConfiguration> Configuration { get; set; }
+        [Import]
+        public PluginConfigurations configurations;
 
         public virtual bool ShouldTestAssembly(Assembly assembly)
         {

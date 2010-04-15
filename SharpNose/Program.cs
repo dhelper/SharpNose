@@ -57,7 +57,7 @@ namespace SharpNose
 
         static int RunTest(IEnumerable<string> args)
         {
-            var runner = new Runner();
+            var configurations = new PluginConfigurations();
 
             var configSection = ConfigurationManager.GetSection("plugins") as Plugins;
             foreach (RunnerConfiguration runnerConfiguration in configSection.TestRunners)
@@ -66,8 +66,10 @@ namespace SharpNose
                                                                           runnerConfiguration.Path,
                                                                           runnerConfiguration.AdditionalArguments);
 
-                runner.AddConfiguration(testRunnerConfiguration);
+                configurations.AddConfiguration(testRunnerConfiguration);
             }
+
+            var runner = new Runner(configurations);
 
             runner.messageRecieved += OnMessageRecieved;
             Console.ForegroundColor = ConsoleColor.Yellow;

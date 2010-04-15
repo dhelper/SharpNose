@@ -14,12 +14,15 @@ namespace SharpNose.Core
         [ImportMany]
         private TestDiscovery[] testDiscoveries;
 
-        public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => {};
-        private readonly Dictionary<string, TestRunnerConfiguration> configurations;
+        [Export]
+        private PluginConfigurations configurations;
 
-        public Runner()
+        public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => {};
+        //private readonly Dictionary<string, TestRunnerConfiguration> configurations;
+
+        public Runner(PluginConfigurations configurations)
         {
-            configurations = new Dictionary<string, TestRunnerConfiguration>();
+            this.configurations = configurations;
             var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
@@ -30,7 +33,7 @@ namespace SharpNose.Core
             int returnedValue = 0;
             foreach (var testDiscovery in testDiscoveries)
             {
-                testDiscovery.Configuration = configurations;
+               // testDiscovery.Configuration = configurations;
                 
                 var result = testDiscovery.FindTestAssembliesInPath(path);
 
@@ -77,9 +80,9 @@ namespace SharpNose.Core
             return returnedValue;
         }
 
-        public void AddConfiguration(TestRunnerConfiguration configuration)
-        {
-            configurations.Add(configuration.Name, configuration);
-        }
+        ////public void AddConfiguration(TestRunnerConfiguration configuration)
+        ////{
+        ////    configurations.Add(configuration.Name, configuration);
+        ////}
     }
 }
