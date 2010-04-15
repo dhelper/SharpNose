@@ -55,18 +55,6 @@ namespace SharpNose.Core.NUnit
             }
         }
 
-        public override Dictionary<string, TestRunnerConfiguration> Configuration
-        {
-            get
-            {
-                return base.Configuration;
-            }
-            set
-            {
-                base.Configuration = value;
-                internalTestDiscovery.Configuration = value;
-            }
-        }
 
         public override string TestFixtureName
         {

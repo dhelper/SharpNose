@@ -101,6 +101,7 @@
     <Compile Include="MessageRecievedEventArgs.cs" />
     <Compile Include="NUnit\NUnitCommandLineMaker.cs" />
     <Compile Include="NUnit\NUnitTestDiscovery.cs" />
+    <Compile Include="PluginConfiguration.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="RunnerConfiguration.cs" />
     <Compile Include="TestDiscovery.cs" />
