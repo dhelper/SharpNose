@@ -7,7 +7,7 @@ namespace SharpNose.Core
 {
     public class PluginConfigurations
     {
-        private readonly Dictionary<string, TestRunnerConfiguration> configurations;
+        private readonly Dictionary<string, TestRunnerConfiguration> configurations = new Dictionary<string,TestRunnerConfiguration>();
 
         public void AddConfiguration(TestRunnerConfiguration configuration)
         {
