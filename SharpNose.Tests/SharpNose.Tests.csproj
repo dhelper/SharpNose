@@ -101,6 +101,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharpNose.Plugins.NUnit\SharpNose.Plugins.NUnit.csproj">
+      <Project>{6598E797-3939-43EF-B59B-AA5C2E2015E7}</Project>
+      <Name>SharpNose.Plugins.NUnit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.Plugins.csproj">
+      <Project>{92D8C8FA-0256-4423-A7AE-8E904C2D3659}</Project>
+      <Name>SharpNose.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpNose.Tests.Classes2\SharpNose.Tests.Classes2.csproj">
       <Project>{4BBDD242-CE61-4772-89D4-CB829CD9BDD0}</Project>
       <Name>SharpNose.Tests.Classes2</Name>

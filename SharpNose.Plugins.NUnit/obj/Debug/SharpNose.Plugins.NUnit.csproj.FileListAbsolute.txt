@@ -1,0 +1,7 @@
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\bin\Debug\SharpNose.Plugins.NUnit.dll
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\bin\Debug\SharpNose.Plugins.NUnit.pdb
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\bin\Debug\SharpNose.Plugins.dll
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\bin\Debug\SharpNose.Plugins.pdb
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\obj\Debug\SharpNose.Plugins.NUnit.dll
+C:\Documents and Settings\Dror B. Helper\My Documents\Visual Studio Projects\SharpNose\SharpNose.Plugins.NUnit\obj\Debug\SharpNose.Plugins.NUnit.pdb
