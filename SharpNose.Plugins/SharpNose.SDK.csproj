@@ -8,8 +8,8 @@
     <ProjectGuid>{92D8C8FA-0256-4423-A7AE-8E904C2D3659}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpNose.Plugins</RootNamespace>
-    <AssemblyName>SharpNose.Plugins</AssemblyName>
+    <RootNamespace>SharpNose.SDK</RootNamespace>
+    <AssemblyName>SharpNose.SDK</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

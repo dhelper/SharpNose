@@ -39,14 +39,5 @@ namespace SharpNose.Tests
 			
 			Assert.AreEqual(Operation.Invalid, parser.SelectedOperation);
 		}
-		
-		[Test]
-		public void Parse_CreatedWithConfigCommand_SelectedOperationIsConfig()
-		{
-			var parser = new ArgumentParser(new string[]{"-config"});
-			
-			Assert.AreEqual(Operation.Config, parser.SelectedOperation);
-		}	
-		
 	}
 }

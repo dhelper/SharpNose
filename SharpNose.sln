@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Core", "SharpNose.Core\SharpNose.Core.csproj", "{4A69B647-9633-4F27-95BB-02C4420DAF5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose", "SharpNose\SharpNose.csproj", "{B317DC44-0776-469A-945D-72CEE1B84BAD}"
@@ -16,9 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		VersionInfo.cs = VersionInfo.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Plugins", "SharpNose.Plugins\SharpNose.Plugins.csproj", "{92D8C8FA-0256-4423-A7AE-8E904C2D3659}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.SDK", "SharpNose.Plugins\SharpNose.SDK.csproj", "{92D8C8FA-0256-4423-A7AE-8E904C2D3659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Plugins.NUnit", "SharpNose.Plugins.NUnit\SharpNose.Plugins.NUnit.csproj", "{6598E797-3939-43EF-B59B-AA5C2E2015E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.SDK.NUnit", "SharpNose.Plugins.NUnit\SharpNose.SDK.NUnit.csproj", "{6598E797-3939-43EF-B59B-AA5C2E2015E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

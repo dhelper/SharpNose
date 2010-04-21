@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SharpNose.Plugins
+namespace SharpNose.SDK
 {
     public class PluginConfigurations
     {

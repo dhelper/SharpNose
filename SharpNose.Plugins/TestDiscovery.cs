@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace SharpNose.Plugins
+namespace SharpNose.SDK
 {
     [InheritedExport]
     public abstract class TestDiscovery

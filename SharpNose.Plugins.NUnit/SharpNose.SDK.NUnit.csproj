@@ -8,8 +8,8 @@
     <ProjectGuid>{6598E797-3939-43EF-B59B-AA5C2E2015E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpNose.Plugins.NUnit</RootNamespace>
-    <AssemblyName>SharpNose.Plugins.NUnit</AssemblyName>
+    <RootNamespace>SharpNose.SDK.NUnit</RootNamespace>
+    <AssemblyName>SharpNose.SDK.NUnit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,9 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.Plugins.csproj">
+    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.SDK.csproj">
       <Project>{92D8C8FA-0256-4423-A7AE-8E904C2D3659}</Project>
-      <Name>SharpNose.Plugins</Name>
+      <Name>SharpNose.SDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

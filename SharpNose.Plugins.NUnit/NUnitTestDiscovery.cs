@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using SharpNose.Plugins;
-using SharpNose.Plugins.NUnit;
 
-namespace SharpNose.Core.NUnit
+namespace SharpNose.SDK.NUnit
 {
     public class NUnitTestDiscovery : TestDiscovery
     {
