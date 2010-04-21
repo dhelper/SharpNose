@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System.Linq;
-using SharpNose.Core.NUnit;
+using SharpNose.SDK.NUnit;
 
 namespace SharpNose.Tests
 {

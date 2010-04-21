@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using SharpNose.Core;
+using SharpNose.SDK;
 
 namespace SharpNose
 {

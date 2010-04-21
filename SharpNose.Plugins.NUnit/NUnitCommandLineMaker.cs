@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace SharpNose.Plugins.NUnit
+namespace SharpNose.SDK.NUnit
 {
     public class NUnitCommandLineMaker : CommandLineMaker
     {

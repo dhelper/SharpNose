@@ -1,4 +1,4 @@
-namespace SharpNose.Plugins
+namespace SharpNose.SDK
 {
     public class CommandLineInfo
     {

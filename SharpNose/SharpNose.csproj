@@ -160,9 +160,9 @@
       <Project>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</Project>
       <Name>SharpNose.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.Plugins.csproj">
+    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.SDK.csproj">
       <Project>{92D8C8FA-0256-4423-A7AE-8E904C2D3659}</Project>
-      <Name>SharpNose.Plugins</Name>
+      <Name>SharpNose.SDK</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
