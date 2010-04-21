@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using SharpNose.Plugins;
+using SharpNose.Plugins.NUnit;
 
 namespace SharpNose.Core.NUnit
 {
@@ -29,46 +30,8 @@ namespace SharpNose.Core.NUnit
         public override bool ShouldTestAssembly(Assembly assembly)
         {
             return !assembly.GetReferencedAssemblies().Any(
-                referencedAssembly => referencedAssembly.Name.Equals("TypeMock") || 
-                    referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
-        }
-    }
-
-    public class NUnitIsolatorTestDiscovery : TestDiscovery
-    {
-        private readonly NUnitTestDiscovery internalTestDiscovery;
-
-        public NUnitIsolatorTestDiscovery()
-        {
-            internalTestDiscovery = new NUnitTestDiscovery();
-        }
-
-        public override string Name
-        {
-            get
-            {
-                return "Isolator";
-            }
-        }
-
-
-        public override string TestFixtureName
-        {
-            get { return internalTestDiscovery.TestFixtureName; }
-        }
-
-        public override CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound)
-        {
-            var result = internalTestDiscovery.GenerateCommandLine(testFixtruesFound);
-
-            return new CommandLineInfo(Path.Combine(TestRunnerPath, "TMockRunner.exe"), result.TestRunner + " " + result.Arguments, AdditionalArguments);
-        }
-
-        public override bool ShouldTestAssembly(Assembly assembly)
-        {
-            return assembly.GetReferencedAssemblies().Any(
                 referencedAssembly => referencedAssembly.Name.Equals("TypeMock") ||
-                    referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
+                                      referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
         }
     }
 }

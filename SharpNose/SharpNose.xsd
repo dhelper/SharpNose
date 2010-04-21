@@ -1,41 +1,45 @@
 <?xml version="1.0"?>
+
 <xs:schema xmlns:tns="SharpNose" elementFormDefault="qualified" targetNamespace="SharpNose" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="plugins" type="tns:SharpNose.PluginsCT" />
-	<xs:complexType name="SharpNose.RunnerConfigurationCT">
-		<xs:sequence>
-		</xs:sequence>
-		<xs:attribute name="name" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The Name.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="path" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The Path.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="additionalArguments" use="optional" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The AdditionalArguments.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-	<xs:complexType name="SharpNose.RunnerConfigurationsCT">
-		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="testRunner" type="tns:SharpNose.RunnerConfigurationCT">
-				<xs:annotation>
-					<xs:documentation>The RunnerConfiguration Configuration Element.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="SharpNose.PluginsCT">
-		<xs:sequence>
-			<xs:element minOccurs="0" name="testRunners" type="tns:SharpNose.RunnerConfigurationsCT">
-				<xs:annotation>
-					<xs:documentation>The TestRunners.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
+  <xs:element name="plugins" type="tns:SharpNose.PluginsCT" />
+  <xs:complexType name="SharpNose.RunnerConfigurationCT">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="name" use="required" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The Name.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="path" use="required" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The Path.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="additionalArguments" use="optional" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          The AdditionalArguments.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SharpNose.RunnerConfigurationsCT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="testRunner" type="tns:SharpNose.RunnerConfigurationCT">
+        <xs:annotation>
+          <xs:documentation>
+            The RunnerConfiguration Configuration Element.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SharpNose.PluginsCT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="testRunners" type="tns:SharpNose.RunnerConfigurationsCT">
+        <xs:annotation>
+          <xs:documentation>The TestRunners.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>

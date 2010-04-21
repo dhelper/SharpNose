@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
@@ -6,24 +6,24 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using SharpNose.Plugins;
 
 namespace SharpNose.Core
 {
     public class Runner
     {
-        [ImportMany]
+        [Export] private PluginConfigurations configurations;
+
+        public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => { };
+        
+        [ImportMany] 
         private TestDiscovery[] testDiscoveries;
-
-        [Export]
-        private PluginConfigurations configurations;
-
-        public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => {};
 
         public Runner(PluginConfigurations configurations)
         {
             this.configurations = configurations;
-            var assemblyPath = Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location);
-            var pluginPath = Path.Combine(assemblyPath, "Plugins");
+            string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginPath = Path.Combine(assemblyPath, "Plugins");
             var catalog = new DirectoryCatalog(pluginPath);
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
@@ -32,32 +32,33 @@ namespace SharpNose.Core
         public int RunTests(string path)
         {
             int returnedValue = 0;
-            foreach (var testDiscovery in testDiscoveries)
+            foreach (TestDiscovery testDiscovery in testDiscoveries)
             {
-                var result = testDiscovery.FindTestAssembliesInPath(path);
+                IEnumerable<string> result = testDiscovery.FindTestAssembliesInPath(path);
 
-                messageRecieved(this, 
-                    new MessageRecievedEventArgs(string.Format("Found {0} assemblies in path", result.Count())));
-                if(result.Count() == 0)
+                messageRecieved(this,
+                                new MessageRecievedEventArgs(string.Format("Found {0} assemblies in path",
+                                                                           result.Count())));
+                if (result.Count() == 0)
                 {
                     continue;
                 }
 
-                var commandLineInfo = testDiscovery.GenerateCommandLine(result);
-                
-                messageRecieved(this, 
-                    new MessageRecievedEventArgs(string.Format("Running: {0}", commandLineInfo)));
+                CommandLineInfo commandLineInfo = testDiscovery.GenerateCommandLine(result);
+
+                messageRecieved(this,
+                                new MessageRecievedEventArgs(string.Format("Running: {0}", commandLineInfo)));
 
                 string runnerExec = Path.GetFullPath(commandLineInfo.TestRunner);
                 string arguments = commandLineInfo.Arguments + " " + commandLineInfo.AddtionalArguments;
                 var startInfo = new ProcessStartInfo(runnerExec, arguments)
-                {
-                    WorkingDirectory = path,
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false
-                };
+                                    {
+                                        WorkingDirectory = path,
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false
+                                    };
 
-                var proc = Process.Start(startInfo);
+                Process proc = Process.Start(startInfo);
                 do
                 {
                     string output = proc.StandardOutput.ReadLine();
@@ -72,7 +73,7 @@ namespace SharpNose.Core
                     // TODO: proper error handling
                     messageRecieved(this,
                                     new MessageRecievedEventArgs(
-                                        string.Format("Process returned error code {0}",returnedValue)));
+                                        string.Format("Process returned error code {0}", returnedValue)));
                 }
             }
 

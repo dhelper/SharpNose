@@ -1,24 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using SharpNose.Core;
 using System.Linq;
+using SharpNose.Core;
 
 namespace SharpNose
 {
-    class Program
+    internal class Program
     {
         [STAThread]
         public static int Main(string[] args)
         {
-            var foregroundColor = Console.ForegroundColor;
+            ConsoleColor foregroundColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Welcome to #Nose...");
             Console.WriteLine();
             Console.WriteLine();
 
-            var result = 0;
+            int result = 0;
 
             var parser = new ArgumentParser(args);
             switch (parser.SelectedOperation)
@@ -45,7 +45,7 @@ namespace SharpNose
 
         private static void ShowHelp()
         {
-            var foregroundColor = Console.ForegroundColor;
+            ConsoleColor foregroundColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Using #Nose is simple:");
             Console.ForegroundColor = foregroundColor;
@@ -55,7 +55,7 @@ namespace SharpNose
             Console.ForegroundColor = foregroundColor;
         }
 
-        static int RunTest(IEnumerable<string> args)
+        private static int RunTest(IEnumerable<string> args)
         {
             var configurations = new PluginConfigurations();
 
@@ -74,7 +74,7 @@ namespace SharpNose
             runner.messageRecieved += OnMessageRecieved;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Starting run...");
-            var res = runner.RunTests(Path.GetFullPath(args.First()));
+            int res = runner.RunTests(Path.GetFullPath(args.First()));
 
             runner.messageRecieved -= OnMessageRecieved;
 

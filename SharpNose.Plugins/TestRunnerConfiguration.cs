@@ -1,4 +1,4 @@
-namespace SharpNose.Core
+namespace SharpNose.Plugins
 {
     public class TestRunnerConfiguration
     {

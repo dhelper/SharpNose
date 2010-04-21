@@ -2,28 +2,25 @@
 using System.IO;
 using System.Linq;
 
-namespace SharpNose.Core.NUnit
+namespace SharpNose.Plugins.NUnit
 {
     public class NUnitCommandLineMaker : CommandLineMaker
     {
         private readonly string runnerPath;
-        public NUnitCommandLineMaker(string nunitPath) 
+
+        public NUnitCommandLineMaker(string nunitPath)
         {
-            runnerPath = Path.GetFullPath(nunitPath);	
+            runnerPath = Path.GetFullPath(nunitPath);
         }
-		
-        override public string TestRunner
+
+        public override string TestRunner
         {
-            get
-            {
-                return runnerPath +"\\nunit-console.exe";
-            }
-			
+            get { return runnerPath + "\\nunit-console.exe"; }
         }
 
         public string GenerateArguments(IEnumerable<string> testFixturesFound)
         {
-            var arguments = string.Join(" ", testFixturesFound.Select(path => "\"" + path + "\"").ToArray());
+            string arguments = string.Join(" ", testFixturesFound.Select(path => "\"" + path + "\"").ToArray());
             return arguments;
         }
     }

@@ -1,38 +1,30 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Linq;
 using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
-namespace SharpNose.Core
+namespace SharpNose.Plugins
 {
     [InheritedExport]
     public abstract class TestDiscovery
     {
-        abstract public string Name { get; }
+        [Import] private PluginConfigurations configurations;
+        public abstract string Name { get; }
         public abstract string TestFixtureName { get; }
-
-        public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);
 
         public string TestRunnerPath
         {
-            get
-            {
-                return configurations[Name].Path;
-            }
+            get { return configurations[Name].Path; }
         }
 
         public string AdditionalArguments
         {
-            get
-            {
-                return configurations[Name].AdditionalArguments;
-            }
+            get { return configurations[Name].AdditionalArguments; }
         }
 
-        [Import]
-        private PluginConfigurations configurations;
+        public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);
 
         public virtual bool ShouldTestAssembly(Assembly assembly)
         {
@@ -90,7 +82,6 @@ namespace SharpNose.Core
             }
             catch
             {
-
             }
 
             return false;

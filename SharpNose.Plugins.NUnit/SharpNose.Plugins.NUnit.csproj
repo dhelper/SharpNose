@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NUnitCommandLineMaker.cs" />
+    <Compile Include="NUnitIsolatorTestDiscovery.cs" />
     <Compile Include="NUnitTestDiscovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

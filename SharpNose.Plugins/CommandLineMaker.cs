@@ -1,7 +1,7 @@
-﻿namespace SharpNose.Core
+namespace SharpNose.Plugins
 {
-    abstract public class CommandLineMaker
+    public abstract class CommandLineMaker
     {
-        abstract public string TestRunner{get;}
+        public abstract string TestRunner { get; }
     }
 }
