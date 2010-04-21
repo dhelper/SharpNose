@@ -18,12 +18,13 @@ namespace SharpNose.Core
         private PluginConfigurations configurations;
 
         public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => {};
-        //private readonly Dictionary<string, TestRunnerConfiguration> configurations;
 
         public Runner(PluginConfigurations configurations)
         {
             this.configurations = configurations;
-            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            var assemblyPath = Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location);
+            var pluginPath = Path.Combine(assemblyPath, "Plugins");
+            var catalog = new DirectoryCatalog(pluginPath);
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }
@@ -33,8 +34,6 @@ namespace SharpNose.Core
             int returnedValue = 0;
             foreach (var testDiscovery in testDiscoveries)
             {
-               // testDiscovery.Configuration = configurations;
-                
                 var result = testDiscovery.FindTestAssembliesInPath(path);
 
                 messageRecieved(this, 

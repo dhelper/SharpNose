@@ -80,10 +80,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Binaries\MEF\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -96,17 +93,9 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
-    <Compile Include="CommandLineInfo.cs" />
-    <Compile Include="CommandLineMaker.cs" />
     <Compile Include="MessageRecievedEventArgs.cs" />
-    <Compile Include="NUnit\NUnitCommandLineMaker.cs" />
-    <Compile Include="NUnit\NUnitTestDiscovery.cs" />
-    <Compile Include="PluginConfiguration.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="RunnerConfiguration.cs" />
-    <Compile Include="TestDiscovery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestRunnerConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -130,4 +119,11 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpNose.Plugins\SharpNose.Plugins.csproj">
+      <Project>{92D8C8FA-0256-4423-A7AE-8E904C2D3659}</Project>
+      <Name>SharpNose.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
 </Project>
