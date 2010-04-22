@@ -10,18 +10,20 @@ namespace SharpNose.SDK
     [InheritedExport]
     public abstract class TestDiscovery
     {
-        [Import] private PluginConfigurations configurations;
+        [Import("Configurations")]
+        public PluginConfigurations Configurations{ get; set;}
+        
         public abstract string Name { get; }
         public abstract string TestFixtureName { get; }
 
         public string TestRunnerPath
         {
-            get { return configurations[Name].Path; }
+            get { return Configurations[Name].Path; }
         }
 
         public string AdditionalArguments
         {
-            get { return configurations[Name].AdditionalArguments; }
+            get { return Configurations[Name].AdditionalArguments; }
         }
 
         public abstract CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound);

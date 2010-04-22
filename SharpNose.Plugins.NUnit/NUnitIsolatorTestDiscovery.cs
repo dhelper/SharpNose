@@ -27,6 +27,8 @@ namespace SharpNose.SDK.NUnit
 
         public override CommandLineInfo GenerateCommandLine(IEnumerable<string> testFixtruesFound)
         {
+            internalTestDiscovery.Configurations = this.Configurations;
+
             CommandLineInfo result = internalTestDiscovery.GenerateCommandLine(testFixtruesFound);
 
             return new CommandLineInfo(Path.Combine(TestRunnerPath, "TMockRunner.exe"),

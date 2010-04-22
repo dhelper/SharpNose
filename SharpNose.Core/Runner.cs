@@ -12,20 +12,22 @@ namespace SharpNose.Core
 {
     public class Runner
     {
-        [Export] private PluginConfigurations configurations;
+        [ImportMany]
+        private TestDiscovery[] testDiscoveries;
+
+        [Export("Configurations")]
+        private PluginConfigurations Configurations { get; set; }
 
         public EventHandler<MessageRecievedEventArgs> messageRecieved = (sender, args) => { };
-        
-        [ImportMany] 
-        private TestDiscovery[] testDiscoveries;
+        private CompositionContainer container;
 
         public Runner(PluginConfigurations configurations)
         {
-            this.configurations = configurations;
+            this.Configurations = configurations;
             string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pluginPath = Path.Combine(assemblyPath, "Plugins");
             var catalog = new DirectoryCatalog(pluginPath);
-            var container = new CompositionContainer(catalog);
+            container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }
 
