@@ -78,7 +78,6 @@ namespace SharpNose
             int res = runner.RunTests(Path.GetFullPath(args.First()));
 
             runner.messageRecieved -= OnMessageRecieved;
-
             return res;
         }
 
