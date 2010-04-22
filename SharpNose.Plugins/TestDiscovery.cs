@@ -46,7 +46,7 @@ namespace SharpNose.SDK
             {
                 return Assembly.LoadFrom(filename);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -58,7 +58,7 @@ namespace SharpNose.SDK
             {
                 AssemblyName.GetAssemblyName(filename);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

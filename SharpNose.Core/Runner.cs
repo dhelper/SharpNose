@@ -58,10 +58,10 @@ namespace SharpNose.Core
                                         UseShellExecute = false
                                     };
 
-                Process proc = Process.Start(startInfo);
+                var proc = Process.Start(startInfo);
                 do
                 {
-                    string output = proc.StandardOutput.ReadLine();
+                    var output = proc.StandardOutput.ReadLine();
                     Console.WriteLine(output);
                 } while (proc.StandardOutput.EndOfStream == false);
 
@@ -70,6 +70,7 @@ namespace SharpNose.Core
                 if (proc.ExitCode != 0)
                 {
                     returnedValue = proc.ExitCode;
+                   
                     // TODO: proper error handling
                     messageRecieved(this,
                                     new MessageRecievedEventArgs(
@@ -79,10 +80,5 @@ namespace SharpNose.Core
 
             return returnedValue;
         }
-
-        ////public void AddConfiguration(TestRunnerConfiguration configuration)
-        ////{
-        ////    configurations.Add(configuration.Name, configuration);
-        ////}
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using NUnit.Framework;
 using System.Reflection;
 
@@ -19,7 +18,7 @@ namespace SharpNose.Tests
 		[Test]
 		public void Parse_CreatedWithMoreThanOneArg_SelectedOperationInvalid()
 		{
-			var parser = new ArgumentParser(new []{Assembly.GetExecutingAssembly().Location.ToString(), Assembly.GetExecutingAssembly().Location.ToString()});
+			var parser = new ArgumentParser(new []{Assembly.GetExecutingAssembly().Location, Assembly.GetExecutingAssembly().Location});
 			
 			Assert.AreEqual(Operation.Invalid, parser.SelectedOperation);
 		}
@@ -27,7 +26,7 @@ namespace SharpNose.Tests
 		[Test]
 		public void Parse_CreatedWithValidPath_SelectedOperationRunTests()
 		{
-			var parser = new ArgumentParser(new string[]{Environment.CurrentDirectory});
+			var parser = new ArgumentParser(new[]{Environment.CurrentDirectory});
 			
 			Assert.AreEqual(Operation.RunTests, parser.SelectedOperation);
 		}
@@ -35,7 +34,7 @@ namespace SharpNose.Tests
 		[Test]
 		public void Parse_CreatedWithInValidPath_SelectedOperationInvalid()
 		{
-			var parser = new ArgumentParser(new string[]{"DummyPath"});
+			var parser = new ArgumentParser(new[]{"DummyPath"});
 			
 			Assert.AreEqual(Operation.Invalid, parser.SelectedOperation);
 		}
