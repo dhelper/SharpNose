@@ -125,5 +125,4 @@
       <Name>SharpNose.SDK</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
 </Project>

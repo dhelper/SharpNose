@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Reflection;
+using SharpNose.SDK;
 
 namespace SharpNose.Tests
 {
@@ -16,7 +17,7 @@ namespace SharpNose.Tests
 		}
 		
 		[Test]
-		public void Parse_CreatedWithMoreThanOneArg_SelectedOperationInvalid()
+		public void Parse_CreatedWithMoreThanOnePathArg_SelectedOperationInvalid()
 		{
 			var parser = new ArgumentParser(new []{Assembly.GetExecutingAssembly().Location, Assembly.GetExecutingAssembly().Location});
 			
@@ -38,5 +39,38 @@ namespace SharpNose.Tests
 			
 			Assert.AreEqual(Operation.Invalid, parser.SelectedOperation);
 		}
+
+        [Test]
+        public void Parse_RecursiveArgSet_RecursiveTrue()
+        {
+            var parser = new ArgumentParser(new[] {"/r"});
+
+            Assert.IsTrue(parser.RecursiveSearch);
+        }
+
+        [Test]
+        public void Parse_MaskArgSet_MaskAssemblyTrue()
+        {
+            var parser = new ArgumentParser(new[] { "/m:Mask" });
+
+            Assert.IsTrue(parser.MaskAssembly);
+        }
+
+        [Test]
+        public void Parse_NoArgSet_MaskAssemblyAndRecursiveFalse()
+        {
+            var parser = new ArgumentParser(new string[]{});
+
+            Assert.IsFalse(parser.MaskAssembly);
+            Assert.IsFalse(parser.RecursiveSearch);
+        }
+
+        [Test]
+        public void Parse_MaskArgSet_VerifyAssemblyMask()
+        {
+            var parser = new ArgumentParser(new[]{"/m:ThisIsTheMask" });
+
+            Assert.AreEqual("ThisIsTheMask", parser.AssemblyMask.ToString());
+        }
 	}
 }

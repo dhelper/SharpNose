@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
-using System.Linq;
 using SharpNose.Core;
 using SharpNose.SDK;
 
@@ -21,11 +18,12 @@ namespace SharpNose
 
             int result = 0;
 
-            var parser = new ArgumentParser(args);
+            ArgumentParser parser = new ArgumentParser(args);
             switch (parser.SelectedOperation)
             {
                 case Operation.RunTests:
-                    result = RunTest(args);
+                    Console.WriteLine("Searching for valid .Net assemblies...");
+                    result = RunTest(new ValidDotNetAssemblies(new ValidAssemblyDiscovery(parser)));
 
                     break;
                 case Operation.Config:
@@ -52,30 +50,45 @@ namespace SharpNose
             Console.ForegroundColor = foregroundColor;
             Console.WriteLine("SharpNose [Target Directory]");
             Console.WriteLine();
+            ShowOptionalParameters();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.ForegroundColor = foregroundColor;
         }
 
-        private static int RunTest(IEnumerable<string> args)
+        private static void ShowOptionalParameters()
         {
-            var configurations = new PluginConfigurations();
+            ConsoleColor foregroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Optional Parameters:");
+            Console.ForegroundColor = foregroundColor;
+            Console.WriteLine(" /r, /recursive");
+            Console.WriteLine("     Recursively search all directories in Target Directory for test assemblies");
+            Console.WriteLine();
+            Console.WriteLine(" /m:[Regex], /mask:[Regex]");
+            Console.WriteLine("     Only use test assemblies whose full name matches the [Regex]");
+            Console.WriteLine();
+        }
 
-            var configSection = ConfigurationManager.GetSection("plugins") as Plugins;
+        private static int RunTest(ValidDotNetAssemblies validDotNetAssemblies)
+        {
+            PluginConfigurations configurations = new PluginConfigurations();
+
+            Plugins configSection = ConfigurationManager.GetSection("plugins") as Plugins;
             foreach (RunnerConfiguration runnerConfiguration in configSection.TestRunners)
             {
-                var testRunnerConfiguration = new TestRunnerConfiguration(runnerConfiguration.Name,
-                                                                          runnerConfiguration.Path,
-                                                                          runnerConfiguration.AdditionalArguments);
+                TestRunnerConfiguration testRunnerConfiguration =
+                    new TestRunnerConfiguration(
+                        runnerConfiguration.Name, runnerConfiguration.Path, runnerConfiguration.AdditionalArguments);
 
                 configurations.AddConfiguration(testRunnerConfiguration);
             }
 
-            var runner = new Runner(configurations);
+            Runner runner = new Runner(configurations);
 
             runner.messageRecieved += OnMessageRecieved;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Starting run...");
-            int res = runner.RunTests(Path.GetFullPath(args.First()));
+            int res = runner.RunTests(validDotNetAssemblies);
 
             runner.messageRecieved -= OnMessageRecieved;
             return res;

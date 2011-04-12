@@ -93,14 +93,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentParserFake.cs" />
     <Compile Include="ArgumentParserTests.cs" />
     <Compile Include="IsolatorNUnitDisocveryTest.cs" />
+    <Compile Include="MsTestCommandLineMakerTests.cs" />
+    <Compile Include="MsTestDiscoveryTests.cs" />
     <Compile Include="NUnitCommandLineMakerTests.cs" />
     <Compile Include="NUnitDiscoveryTests.cs" />
-    <Compile Include="NUnitTestBase.cs" />
+    <Compile Include="TestFrameworkTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidAssemblyDiscoveryFake.cs" />
+    <Compile Include="ValidDotNetAssembliesTestBase.cs" />
+    <Compile Include="ValidDotNetAssembliesTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharpNose.Plugins.MsTest\SharpNose.SDK.MsTest.csproj">
+      <Project>{E2565E7B-096B-4497-AB02-4854B3E121CB}</Project>
+      <Name>SharpNose.SDK.MsTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpNose.Plugins.NUnit\SharpNose.SDK.NUnit.csproj">
       <Project>{6598E797-3939-43EF-B59B-AA5C2E2015E7}</Project>
       <Name>SharpNose.SDK.NUnit</Name>
@@ -120,6 +130,14 @@
     <ProjectReference Include="..\SharpNose.Core\SharpNose.Core.csproj">
       <Project>{4A69B647-9633-4F27-95BB-02C4420DAF5F}</Project>
       <Name>SharpNose.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpNose.Tests.MsTest.Classes2\SharpNose.Tests.MsTest.Classes2.csproj">
+      <Project>{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}</Project>
+      <Name>SharpNose.Tests.MsTest.Classes2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpNose.Tests.MsTest.Classes\SharpNose.Tests.MsTest.Classes.csproj">
+      <Project>{E1292C91-73C5-4911-899E-F746DB5FF92E}</Project>
+      <Name>SharpNose.Tests.MsTest.Classes</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpNose\SharpNose.csproj">
       <Project>{B317DC44-0776-469A-945D-72CEE1B84BAD}</Project>

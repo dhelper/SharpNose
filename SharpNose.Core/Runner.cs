@@ -31,16 +31,16 @@ namespace SharpNose.Core
             container.ComposeParts(this);
         }
 
-        public int RunTests(string path)
+        public int RunTests(ValidDotNetAssemblies validAssemblies)
         {
             int returnedValue = 0;
             foreach (TestDiscovery testDiscovery in testDiscoveries)
             {
-                IEnumerable<string> result = testDiscovery.FindTestAssembliesInPath(path);
+                IEnumerable<string> result = testDiscovery.FindTestAssembliesInValidAssemblies(validAssemblies);
 
                 messageRecieved(this,
-                                new MessageRecievedEventArgs(string.Format("Found {0} assemblies in path",
-                                                                           result.Count())));
+                                new MessageRecievedEventArgs(string.Format("Found {0} {1} test assemblies in path",
+                                                                           result.Count(), testDiscovery.Name)));
                 if (result.Count() == 0)
                 {
                     continue;
@@ -55,7 +55,7 @@ namespace SharpNose.Core
                 string arguments = commandLineInfo.Arguments + " " + commandLineInfo.AddtionalArguments;
                 var startInfo = new ProcessStartInfo(runnerExec, arguments)
                                     {
-                                        WorkingDirectory = path,
+                                        WorkingDirectory = validAssemblies.BasePath,
                                         RedirectStandardOutput = true,
                                         UseShellExecute = false
                                     };

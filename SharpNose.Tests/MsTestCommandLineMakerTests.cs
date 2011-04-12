@@ -1,17 +1,17 @@
 using NUnit.Framework;
-using SharpNose.SDK.NUnit;
+using SharpNose.SDK.MsTest;
 
 namespace SharpNose.Tests
 {
     [TestFixture]
-    public class NUnitCommandLineMakerTests : TestFrameworkTestBase
+    public class MsTestCommandLineMakerTests
     {
         [Test]
         public void GetCommandLine_PathHasSingleAssembly_CommandLineIncludeThatAssembly()
         {
-            var clm = new NUnitCommandLineMaker("c:\\numitDummyPath");
+            MsTestCommandLineMaker clm = new MsTestCommandLineMaker("c:\\numitDummyPath");
 
-            const string expected = "c:\\numitDummyPath\\nunit-console.exe";
+            const string expected = "c:\\numitDummyPath\\mstest.exe";
 
             Assert.That(clm.TestRunner, Is.EqualTo(expected));
         }
