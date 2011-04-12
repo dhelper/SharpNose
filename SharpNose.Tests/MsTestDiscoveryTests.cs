@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using SharpNose.SDK.NUnit;
+using SharpNose.SDK.MsTest;
 
 namespace SharpNose.Tests
 {
     [TestFixture]
-    public class NUnitDiscoveryTests : TestFrameworkTestBase
+    internal class MsTestDiscoveryTests : TestFrameworkTestBase
     {
         [Test]
         public void FindTestAssembliesFromPath_PathHasSingleAssembly_FindOneFile()
         {
-            NUnitTestDiscovery discovery =
-                new NUnitTestDiscovery();
+            MsTestTestDiscovery discovery =
+                new MsTestTestDiscovery();
 
             IEnumerable<string> result =
                 discovery.FindTestAssembliesInValidAssemblies(GetValidDotNetAssembliesFromPath(SimpleAssemblyPath));
@@ -21,15 +21,15 @@ namespace SharpNose.Tests
         }
 
         [Test]
-        public void FindTestAssembliesFromPath_PathHasTwoAssembly_FindOneFile()
+        public void FindTestAssembliesFromPath_PathHasTwoAssembly_FindTwoFiles()
         {
-            NUnitTestDiscovery discovery =
-                new NUnitTestDiscovery();
+            MsTestTestDiscovery discovery =
+                new MsTestTestDiscovery();
 
             IEnumerable<string> result =
                 discovery.FindTestAssembliesInValidAssemblies(GetValidDotNetAssembliesFromPath(MultipleAssemblyPath));
 
-            Assert.That(result.Count(), Is.EqualTo(1));
+            Assert.That(result.Count(), Is.EqualTo(2));
         }
     }
 }

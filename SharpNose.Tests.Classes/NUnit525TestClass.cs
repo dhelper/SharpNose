@@ -10,5 +10,5 @@ namespace SharpNose.Tests.Classes
         {
             Assert.AreEqual(4, 2 + 2);
         }
-    }
+    }  
 }

@@ -27,9 +27,12 @@ namespace SharpNose.SDK.NUnit
 
         public override bool ShouldTestAssembly(Assembly assembly)
         {
-            return !assembly.GetReferencedAssemblies().Any(
-                referencedAssembly => referencedAssembly.Name.Equals("TypeMock") ||
-                                      referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"));
+            return
+                !assembly.GetReferencedAssemblies().Any(
+                    referencedAssembly => referencedAssembly.Name.Equals("TypeMock") ||
+                                          referencedAssembly.Name.Equals("Typemock.ArrangeActAssert"))
+                &&
+                !assembly.FullName.Contains("nunit.framework");
         }
     }
 }

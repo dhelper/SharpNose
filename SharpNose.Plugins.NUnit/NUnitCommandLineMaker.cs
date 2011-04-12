@@ -10,7 +10,7 @@ namespace SharpNose.SDK.NUnit
 
         public NUnitCommandLineMaker(string nunitPath)
         {
-            runnerPath = Path.GetFullPath(nunitPath);
+            runnerPath = GetFullPathWithExpandedEnvVariables(nunitPath);
         }
 
         public override string TestRunner

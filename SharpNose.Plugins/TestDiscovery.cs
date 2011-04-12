@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -11,10 +10,11 @@ namespace SharpNose.SDK
     public abstract class TestDiscovery
     {
         [Import("Configurations")]
-        public PluginConfigurations Configurations{ get; set;}
-        
+        public PluginConfigurations Configurations { get; set; }
+
         public abstract string Name { get; }
         public abstract string TestFixtureName { get; }
+
 
         public string TestRunnerPath
         {
@@ -33,17 +33,23 @@ namespace SharpNose.SDK
             return true;
         }
 
-        public IEnumerable<string> FindTestAssembliesInPath(string path)
+        public IEnumerable<string> FindTestAssembliesInValidAssemblies(ValidDotNetAssemblies validAssemblies)
         {
-            return from filename in Directory.GetFiles(path)
-                   where IsValidAssebly(filename)
-                   let assembly = LoadAssembly(filename)
-                   where IsTestAssembly(assembly)
-                   select filename;
+            List<string> testAssemblies =
+                (
+                    from filename in validAssemblies
+                    let assembly = LoadAssembly(filename)
+                    where IsTestAssembly(assembly)
+                    select filename
+                ).ToList();
+
+            return testAssemblies;
         }
 
         private static Assembly LoadAssembly(string filename)
         {
+            ProgressingOrSpinningCursor.ProgressOrSpinCursor();
+
             try
             {
                 return Assembly.LoadFrom(filename);
@@ -54,19 +60,6 @@ namespace SharpNose.SDK
             }
         }
 
-        private static bool IsValidAssebly(string filename)
-        {
-            try
-            {
-                AssemblyName.GetAssemblyName(filename);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
 
         private bool IsTestAssembly(Assembly assembly)
         {
@@ -77,7 +70,8 @@ namespace SharpNose.SDK
                     return false;
                 }
 
-                if (GetAllTestClasses(assembly).Any() && ShouldTestAssembly(assembly))
+                if (GetAllTestClasses(assembly).Any()
+                    && ShouldTestAssembly(assembly))
                 {
                     return true;
                 }

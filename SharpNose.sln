@@ -13,6 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests", "SharpNos
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{006C2D85-F598-4711-BD2B-CB836AD63768}"
 	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		SharpNose.vsmdi = SharpNose.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 		VersionInfo.cs = VersionInfo.cs
 	EndProjectSection
 EndProject
@@ -20,7 +23,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.SDK", "SharpNose.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.SDK.NUnit", "SharpNose.Plugins.NUnit\SharpNose.SDK.NUnit.csproj", "{6598E797-3939-43EF-B59B-AA5C2E2015E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.SDK.MsTest", "SharpNose.Plugins.MsTest\SharpNose.SDK.MsTest.csproj", "{E2565E7B-096B-4497-AB02-4854B3E121CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests.MsTest.Classes", "SharpNose.Tests.MsTest.Classes\SharpNose.Tests.MsTest.Classes.csproj", "{E1292C91-73C5-4911-899E-F746DB5FF92E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests.MsTest.Classes2", "SharpNose.Tests.MsTest.Classes2\SharpNose.Tests.MsTest.Classes2.csproj", "{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SharpNose.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
@@ -80,6 +92,24 @@ Global
 		{6598E797-3939-43EF-B59B-AA5C2E2015E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6598E797-3939-43EF-B59B-AA5C2E2015E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6598E797-3939-43EF-B59B-AA5C2E2015E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2565E7B-096B-4497-AB02-4854B3E121CB}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1292C91-73C5-4911-899E-F746DB5FF92E}.Release|x86.ActiveCfg = Release|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
