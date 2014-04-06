@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Core", "SharpNose.Core\SharpNose.Core.csproj", "{4A69B647-9633-4F27-95BB-02C4420DAF5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose", "SharpNose\SharpNose.csproj", "{B317DC44-0776-469A-945D-72CEE1B84BAD}"
@@ -30,6 +30,42 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNose.Tests.MsTest.Classes2", "SharpNose.Tests.MsTest.Classes2\SharpNose.Tests.MsTest.Classes2.csproj", "{13CDF82A-35BA-478E-88C2-8DC5DF13BC2D}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs07
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SharpNose.Core\\SharpNose.Core.csproj
+		SccProjectName1 = SharpNose.Core
+		SccLocalPath1 = SharpNose.Core
+		SccProjectUniqueName2 = SharpNose\\SharpNose.csproj
+		SccProjectName2 = SharpNose
+		SccLocalPath2 = SharpNose
+		SccProjectUniqueName3 = SharpNose.Tests.Classes\\SharpNose.Tests.Classes.csproj
+		SccProjectName3 = SharpNose.Tests.Classes
+		SccLocalPath3 = SharpNose.Tests.Classes
+		SccProjectUniqueName4 = SharpNose.Tests.Classes2\\SharpNose.Tests.Classes2.csproj
+		SccProjectName4 = SharpNose.Tests.Classes2
+		SccLocalPath4 = SharpNose.Tests.Classes2
+		SccProjectUniqueName5 = SharpNose.Tests\\SharpNose.Tests.csproj
+		SccProjectName5 = SharpNose.Tests
+		SccLocalPath5 = SharpNose.Tests
+		SccProjectUniqueName6 = SharpNose.Plugins\\SharpNose.SDK.csproj
+		SccProjectName6 = SharpNose.Plugins
+		SccLocalPath6 = SharpNose.Plugins
+		SccProjectUniqueName7 = SharpNose.Plugins.NUnit\\SharpNose.SDK.NUnit.csproj
+		SccProjectName7 = SharpNose.Plugins.NUnit
+		SccLocalPath7 = SharpNose.Plugins.NUnit
+		SccProjectUniqueName8 = SharpNose.Plugins.MsTest\\SharpNose.SDK.MsTest.csproj
+		SccProjectName8 = SharpNose.Plugins.MsTest
+		SccLocalPath8 = SharpNose.Plugins.MsTest
+		SccProjectUniqueName9 = SharpNose.Tests.MsTest.Classes\\SharpNose.Tests.MsTest.Classes.csproj
+		SccProjectName9 = SharpNose.Tests.MsTest.Classes
+		SccLocalPath9 = SharpNose.Tests.MsTest.Classes
+		SccProjectUniqueName10 = SharpNose.Tests.MsTest.Classes2\\SharpNose.Tests.MsTest.Classes2.csproj
+		SccProjectName10 = SharpNose.Tests.MsTest.Classes2
+		SccLocalPath10 = SharpNose.Tests.MsTest.Classes2
+	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SharpNose.vsmdi
 	EndGlobalSection
