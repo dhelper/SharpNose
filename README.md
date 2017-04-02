@@ -9,7 +9,7 @@ Using #Nose is as simple as running SharpNose.exe from the command line - in fac
 * Run all unit tests in that directory: **SharpNose.exe _directory_**
 * Configure application: from the application's settings
 
-![](Home_sharpnose.png)
+![Running SHarpNose](Docs\Home_sharpnose.PNG)
 
 ## Supported frameworks
 At the moment #Nose only supports NUnit - additional unit testing framework support will be added soon.
